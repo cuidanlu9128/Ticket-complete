@@ -18,6 +18,7 @@ CityItem.propTypes = {
     onSelect: PropTypes.func.isRequired,
 };
 
+//title是26个字母之一
 const CitySection = memo(function CitySection(props) {
     const { title, cities = [], onSelect } = props;
 
@@ -45,6 +46,7 @@ CitySection.propTypes = {
     onSelect: PropTypes.func.isRequired,
 };
 
+//只负责对每一个字母的显示和点击相应
 const AlphaIndex = memo(function AlphaIndex(props) {
     const { alpha, onClick } = props;
 
@@ -60,10 +62,12 @@ AlphaIndex.propTypes = {
     onClick: PropTypes.func.isRequired,
 };
 
+//ele是26个字母的array的每个元素，65+index获得字母
 const alphabet = Array.from(new Array(26), (ele, index) => {
     return String.fromCharCode(65 + index);
 });
 
+//遍历字母表数组， 对于每个字母都渲染一个Alphaindex组间
 const CityList = memo(function CityList(props) {
     const { sections, toAlpha, onSelect } = props;
 
@@ -81,6 +85,7 @@ const CityList = memo(function CityList(props) {
                     );
                 })}
             </div>
+            
             <div className="city-index">
                 {alphabet.map(alpha => {
                     return (
@@ -197,6 +202,7 @@ const CitySelector = memo(function CitySelector(props) {
         fetchCityData();
     }, [show, cityData, isLoading]);
 
+    //点击之后，通过scrollIntoView滚动到页面
     const toAlpha = useCallback(alpha => {
         document.querySelector(`[data-cate='${alpha}']`).scrollIntoView(true);
     }, []);

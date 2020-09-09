@@ -4,7 +4,7 @@ import { h0 } from '../common/fp';
 //(npm i dayjs --save)
 import dayjs from 'dayjs';
 import './DepartDate.css';
-import PropTypes from 'prop-types';
+
 
 
 export default function DepartDate(props) {
